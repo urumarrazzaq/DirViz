@@ -6,12 +6,13 @@ from PyQt6.QtCore import Qt, QSize
 from PyQt6.QtGui import QFont, QIcon
 from core.directory_scanner import DirectoryScanner
 from core.file_utils import format_size
+from config.config import WINDOW_TITLE, MIN_WINDOW_SIZE
 
 class DirectoryVisualizer(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Directory Structure Visualizer")
-        self.setMinimumSize(800, 600)
+        self.setWindowTitle(WINDOW_TITLE)
+        self.setMinimumSize(*MIN_WINDOW_SIZE)
         self.scanner = None
         self.init_ui()
         self.apply_styles()

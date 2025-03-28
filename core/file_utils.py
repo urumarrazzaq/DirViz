@@ -1,8 +1,8 @@
 import os
 from datetime import datetime
 
-# Configuration
-MAX_FILE_SIZE_KB = 25 * 1024  # Files larger than this will be marked red (1MB)
+from config.config import MAX_FILE_SIZE_KB
+
 
 def format_size(size):
     """Convert size to human-readable format"""
