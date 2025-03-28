@@ -13,7 +13,7 @@ DirViz is a **PyQt6-based desktop application** for visualizing directory struct
 
 ## Screenshots
 
-![Screenshot](assets/screenshot.png)  
+![Uploading Screenshot 2025-03-28 121336.png…]()
 
 ## Installation
 
