@@ -1,6 +1,9 @@
 import os
 from datetime import datetime
 
+# Configuration
+MAX_FILE_SIZE_KB = 25 * 1024  # Files larger than this will be marked red (1MB)
+
 def format_size(size):
     """Convert size to human-readable format"""
     for unit in ['B', 'KB', 'MB', 'GB', 'TB']:
@@ -12,13 +15,14 @@ def format_size(size):
     return f"{size:.1f}PB"
 
 def get_file_stats(path):
-    """Get file size and modified time"""
+    """Get file size and modified time with size check"""
     try:
         size = os.path.getsize(path)
         modified = datetime.fromtimestamp(os.path.getmtime(path)).strftime('%Y-%m-%d %H:%M')
-        return size, modified
+        is_large = size > MAX_FILE_SIZE_KB * 1024  # Convert KB to bytes
+        return size, modified, is_large
     except Exception:
-        return 0, "Unknown"
+        return 0, "Unknown", False
 
 def get_folder_size(path):
     """Calculate total size of a folder"""

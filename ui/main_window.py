@@ -185,14 +185,18 @@ class DirectoryVisualizer(QMainWindow):
         summary.setStyleSheet("font-weight: bold; padding: 5px 0;")
         self.content_layout.addWidget(summary)
         
-        # Add structure
-        for line in results['structure']:
+        # Add structure with color coding
+        for line, is_large in results['structure']:
             label = QLabel(line)
-            label.setStyleSheet("font-family: monospace;")
+            style = "font-family: monospace;"
+            if is_large:
+                style += " color: #ff5555; font-weight: bold;"  # Red for large files
+            label.setStyleSheet(style)
             self.content_layout.addWidget(label)
         
         self.status_label.setText("Scan completed")
         self.reset_ui()
+
 
     def show_error(self, message):
         label = QLabel(f"Error: {message}")
